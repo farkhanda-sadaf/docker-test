@@ -23,13 +23,10 @@ jobs:
             role-session-name: samplerolesession
             aws-region: us-east-1 
 
-      - name: Pull image from Amazon ECR
-        run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 327510741480.dkr.ecr.us-east-1.amazonaws.com
-          docker pull 32751074148.dkr.ecr.us-east-1.amazonaws.com/fanda-repo:latest
-
-      - name: Run Docker container
+      - name: Push image from Amazon ECR
         run: |
-          docker run -d -p 8080:80 327510741480.dkr.ecr.us-east-1.amazonaws.com/fanda-repo:latest
-      
+            aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 327510741480.dkr.ecr.us-east-1.amazonaws.com
+            docker build -t 327510741480.dkr.ecr.us-east-1.amazonaws.com/fanda-repo:latest .
+            docker push 327510741480.dkr.ecr.us-east-1.amazonaws.com/fanda-repo:latest
 
     
