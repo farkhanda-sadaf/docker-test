@@ -28,7 +28,7 @@ jobs:
             aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 327510741480.dkr.ecr.us-east-1.amazonaws.com
             docker build -t 327510741480.dkr.ecr.us-east-1.amazonaws.com/fanda-repo:latest .
             docker push 327510741480.dkr.ecr.us-east-1.amazonaws.com/fanda-repo:latest
-            aws ecs run-task --cluster fandas-cluster --launch-type FARGATE --task-definition fandas-task --network-configuration 'awsvpcConfiguration={subnets=[subnet-094ee6ba7486e1a62],securityGroups=[sg-0feb91a1971b3555b (fanda-sg)]}'
+            aws ecs run-task --cluster fandas-cluster --launch-type FARGATE --task-definition fandas-task --network-configuration 'awsvpcConfiguration={subnets=[subnet-094ee6ba7486e1a62],securityGroups=[sg-0feb91a1971b3555b]}'
 
 
     
