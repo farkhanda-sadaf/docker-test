@@ -23,7 +23,7 @@ jobs:
             role-session-name: samplerolesession
             aws-region: us-east-1 
 
-      - name: Push image from Amazon ECR
+      - name: Push image to Amazon ECR
         run: |
             aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 327510741480.dkr.ecr.us-east-1.amazonaws.com
             docker build -t 327510741480.dkr.ecr.us-east-1.amazonaws.com/fanda-repo:latest .
